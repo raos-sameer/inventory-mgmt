@@ -8,6 +8,7 @@ readline.question(
     "<purchase_country>:<optional_passport_number>:<item_type>:<number_of_units_to_be_ordered>:<item_type>:<number_of_units_to_be_ordered>\n" +
     " For eg: UK:B123AB1234567:Gloves:20:Mask:10\n",
   (input) => {
+    // Program Starts
     input = input.split(":");
     let uk_sales = {
       gloves_quantity: 100,

@@ -5,7 +5,6 @@ function calculateSalesForGermany(
   param,
   item_type
 ) {
-  let remaining = 0;
   let remaining_cost = 0;
   let total_cost = 0;
   let transport_cost = 400;
@@ -19,8 +18,9 @@ function calculateSalesForGermany(
   uk_sales[item_type] = uk_sales[item_type] - quotient * 10;
   germany_sales[item_type] = germany_sales[item_type] - remainder;
 
+  // Calculate Transport Cost considering discount
   if (userInputs.passport === "UK") {
-    remaining_cost = remaining_cost + quotient * (transport_cost - discount); //2500 + 2 * 320
+    remaining_cost = remaining_cost + quotient * (transport_cost - discount);
   } else {
     remaining_cost = remaining_cost + quotient * transport_cost;
   }
@@ -32,11 +32,6 @@ function calculateSalesForGermany(
       germany_sales[item_type] + remainder - userInputs[item_type];
   }
   total_cost = total_cost + remaining_cost;
-
-  remaining = 0;
-  remaining_cost = 0;
-  transport_cost = 400;
-  discount = 80;
   return {
     total_cost,
     uk_sales,
