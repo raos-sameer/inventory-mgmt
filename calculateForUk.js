@@ -23,14 +23,13 @@ function calculateSalesForUK(
       germany_sales[item_type] = germany_sales[item_type] - remaining;
 
       // Calculate Transport Cost considering discount
+      const quotient = Math.floor(remaining / 10);
+      const remainder = userInputs[item_type] % 10;
       if (userInputs.passport === "GERMANY") {
-        const quotient = Math.floor(remaining / 10);
-        const remainder = userInputs[item_type] % 10;
         remaining_cost = remaining_cost + remainder * germany_sales[param];
         remaining_cost =
           remaining_cost + quotient * (transport_cost - discount);
       } else {
-        const quotient = Math.floor(remaining / 10);
         remaining_cost = remaining_cost + quotient * transport_cost;
       }
     }
