@@ -5,7 +5,7 @@ function calculateSalesForUK(
   param,
   item_type
 ) {
-  let remaining = 0;
+  let remaining_item = 0;
   let remaining_cost = 0;
   let total_cost = 0;
   let transport_cost = 400;
@@ -15,15 +15,15 @@ function calculateSalesForUK(
     total_cost = total_cost + userInputs[item_type] * uk_sales[param];
     uk_sales[item_type] = uk_sales[item_type] - userInputs[item_type];
   } else {
-    remaining = userInputs[item_type] - uk_sales[item_type]; // remaining to be shipped from other country
+    remaining_item = userInputs[item_type] - uk_sales[item_type]; // remaining_item to be shipped from other country
     total_cost = total_cost + uk_sales[item_type] * uk_sales[param]; //cost of entire lot of item_type
     uk_sales[item_type] = 0;
-    if (remaining <= germany_sales[item_type]) {
-      remaining_cost = remaining_cost + remaining * germany_sales[param];
-      germany_sales[item_type] = germany_sales[item_type] - remaining;
+    if (remaining_item <= germany_sales[item_type]) {
+      remaining_cost = remaining_cost + remaining_item * germany_sales[param];
+      germany_sales[item_type] = germany_sales[item_type] - remaining_item;
 
       // Calculate Transport Cost considering discount
-      const quotient = Math.floor(remaining / 10);
+      const quotient = Math.floor(remaining_item / 10);
       const remainder = userInputs[item_type] % 10;
       if (userInputs.passport === "GERMANY") {
         remaining_cost = remaining_cost + remainder * germany_sales[param];

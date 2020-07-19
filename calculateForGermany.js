@@ -8,7 +8,8 @@ function calculateSalesForGermany(
   let remaining_cost = 0;
   let total_cost = 0;
   let transport_cost = 400;
-  let discount = 80;
+  let discountPercent = 20 / 100;
+  let discount = transport_cost * discountPercent;
 
   const quotient = Math.floor(userInputs[item_type] / 10);
   remaining_cost = remaining_cost + quotient * 10 * uk_sales[param];
