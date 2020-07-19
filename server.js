@@ -26,8 +26,8 @@ readline.question(
     const userInputs = {
       purchase_country: input[0].toUpperCase(),
       passport: input.length > 5 ? findRegex(input[1]) : "",
-      gloves_quantity: input.length > 5 ? input[3] : input[2],
-      mask_quantity: input.length > 5 ? input[5] : input[4],
+      gloves_quantity: input[input.indexOf("Gloves") + 1],
+      mask_quantity: input[input.indexOf("Mask") + 1],
     };
 
     let total_cost = 0;
@@ -41,10 +41,9 @@ readline.question(
     ) {
       total_cost = "OUT_OF_STOCK";
     } else {
-      // Gloves Calculations for UK
       if (userInputs.purchase_country === "UK") {
         const uk = require("./calculateForUk");
-
+        // Gloves Calculations for UK
         let resultSet = uk.calculateSalesForUK(
           userInputs,
           uk_sales,
