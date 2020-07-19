@@ -71,7 +71,7 @@ readline.question(
 
       // Glove calculation for Germany
       if (userInputs.purchase_country === "GERMANY") {
-        const germany = require("./calculateForGerany");
+        const germany = require("./calculateForGermany");
         resultSet = germany.calculateSalesForGermany(
           userInputs,
           uk_sales,
